@@ -1,6 +1,8 @@
 const axios = require('axios');
-const geoCodingURL = 'https://maps.googleapis.com/maps/api/geocode/json'
-const key = ;
+const apiEndpoints = require('../config/apiEndpoints');
+const keys = require('../config/keys');
+
+const geoCodingURL = apiEndpoints.geoCodingURL;
 const Flatted = require('flatted'); //parses the circular JSON geocoding returns
 
 function translate(city) {
@@ -8,7 +10,7 @@ function translate(city) {
     axios.get(geoCodingURL, {
         params: {
             address: city,
-            key: key
+            key: keys.googleAPI
         }
     }).then((response)=> {
         let json = Flatted.parse(Flatted.stringify(response));
