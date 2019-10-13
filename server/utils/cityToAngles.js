@@ -2,7 +2,7 @@ const axios = require('axios');
 const apiEndpoints = require('../config/apiEndpoints');
 const keys = require('../config/keys');
 
-const geoCodingURL = apiEndpoints.geoCodingURL;
+const geoCodingURL = apiEndpoints.geoCodeURL;
 const Flatted = require('flatted'); //parses the circular JSON geocoding returns
 
 function translate(city) {
