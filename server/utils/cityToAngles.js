@@ -5,19 +5,25 @@ const keys = require('../config/keys');
 const geoCodingURL = apiEndpoints.geoCodeURL;
 const Flatted = require('flatted'); //parses the circular JSON geocoding returns
 
-function translate(city) {
+async function translate(city) {
     //console.log(city)
-    axios.get(geoCodingURL, {
-        params: {
-            address: city,
-            key: keys.googleAPI
-        }
-    }).then((response)=> {
-        let json = Flatted.parse(Flatted.stringify(response));
-        console.log(json.data.results[0].geometry.location);
-    }).catch((error) => {
-        console.log(error);
-    });
+    console.log('inside translate');
+    var res
+    const temp = await
+        axios.get(geoCodingURL, {
+            params: {
+                address: city,
+                key: keys.googleAPI
+            }
+        }).then((response)=> {
+            let json = Flatted.parse(Flatted.stringify(response));
+            res = json.data.results[0].geometry.location;
+
+        }).catch((error) => {
+            console.log(error);
+            return false;
+        });
+    return res;
 }
 
-module.exports = translate; 
+module.exports = translate

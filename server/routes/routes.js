@@ -1,6 +1,5 @@
 const express = require('express');
-const translate = require('../utils/cityToAngles');
-const Flatted = require('flatted');
+const generateItinerary = require('../services/generateItinerary');
 
 module.exports = (app) => {
     app.get('/', (req,res) => {
@@ -9,8 +8,11 @@ module.exports = (app) => {
 
     app.use (express.json());
 
-    app.post('/translate', (req, res) => {
-        translate(req.body.city);
+    app.post('/generateItinerary', (req, res) => {
+        //translate(req.body.city);
+        console.log('got req');
+        console.log(req.body.city);
+        generateItinerary(req.body.city)
         res.send('received');
         
     });
