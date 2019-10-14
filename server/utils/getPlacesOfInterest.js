@@ -14,7 +14,8 @@ async function placesOfInterest(city) {
             params: {
                 query: queryParamter,
                 inputtype: "textquery",
-                key: keys.googleAPI
+                key: keys.googleAPI,
+                fields: 'price_level'
             }
         }).then((response)=> {
             //console.log(response.data.results);

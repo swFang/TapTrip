@@ -13,7 +13,6 @@ module.exports = (app) => {
         console.log('got req');
         console.log(req.body.city);
         generateItinerary(req.body.city)
-        res.send('received');
-        
+        res.send('received');    
     });
 };
