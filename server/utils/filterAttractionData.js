@@ -2,6 +2,7 @@ function filterData(attractions) {
     if(attractions != null){
         var formattedLocations = [];
         attractions.map( (location) => {
+            
             var name = location.name;
             var adr = location.formatted_address;
             var ratingFactor = 5 - location.rating; 
@@ -9,6 +10,7 @@ function filterData(attractions) {
             var prominence = 10; 
             var place_id = location.place_id;
             var formattedLocation = {name, adr, place_id, ratingFactor, prominence, edgeWeight}; 
+
             formattedLocations.push(formattedLocation);
         });
         return formattedLocations;
