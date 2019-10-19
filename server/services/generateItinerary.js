@@ -13,7 +13,7 @@ async function generateItinerary(city) {
     try {
         var attractions = await placesOfInterest(city);
         var filteredAttractions = filterData(attractions);
-        var sortedList = sortAttractions(filteredAttractions)
+        var sortedList = await sortAttractions(filteredAttractions)
     } catch (err) {
         console.log(err);
     }
